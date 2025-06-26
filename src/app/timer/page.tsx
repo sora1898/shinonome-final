@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const timers = [
-  { id: 1, name: "英語", duration: 60, color: "bg-blue-500" },
+  { id: 1, name: "英語", duration: 90, color: "bg-blue-500" },
   { id: 2, name: "歴史・地理", duration: 80, color: "bg-green-500" },
-  { id: 3, name: "小論文", duration: 90, color: "bg-purple-500" },
+  { id: 3, name: "小論文", duration: 60, color: "bg-purple-500" },
 ];
 
 export default function Timer() {
@@ -43,6 +43,14 @@ export default function Timer() {
         return prev - 1;
       });
     }, 1000);
+  };
+
+  const stopTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    setIsRunning(false);
+    setIsPaused(false);
   };
 
   const pauseTimer = () => {
@@ -168,7 +176,7 @@ export default function Timer() {
             </div>
             
             {/* コントロールボタン */}
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4 flex-wrap">
               {!isPaused ? (
                 <button
                   onClick={pauseTimer}
@@ -184,6 +192,12 @@ export default function Timer() {
                   再開
                 </button>
               )}
+              <button
+                onClick={stopTimer}
+                className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold"
+              >
+                停止
+              </button>
               <button
                 onClick={resetTimer}
                 className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors font-semibold"
