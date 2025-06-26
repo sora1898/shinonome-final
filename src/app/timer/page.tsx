@@ -24,25 +24,32 @@ export default function Timer() {
     };
   }, []);
 
-  const startTimer = (duration: number) => {
+  const selectTimer = (duration: number) => {
     setSelectedTimer(duration);
     setTimeLeft(duration * 60);
     setInitialTime(duration * 60);
-    setIsRunning(true);
+    setIsRunning(false);
     setIsPaused(false);
-    
-    intervalRef.current = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(intervalRef.current!);
-          setIsRunning(false);
-          setIsPaused(false);
-          alert("時間です！");
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+  };
+
+  const startTimer = () => {
+    if (selectedTimer && !isRunning) {
+      setIsRunning(true);
+      setIsPaused(false);
+      
+      intervalRef.current = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            clearInterval(intervalRef.current!);
+            setIsRunning(false);
+            setIsPaused(false);
+            alert("時間です！");
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
   };
 
   const stopTimer = () => {
@@ -111,7 +118,7 @@ export default function Timer() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {!isRunning ? (
+        {!selectedTimer ? (
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-8">タイマーを選択してください</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -119,7 +126,7 @@ export default function Timer() {
                 <div
                   key={timer.id}
                   className={`${timer.color} text-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105`}
-                  onClick={() => startTimer(timer.duration)}
+                  onClick={() => selectTimer(timer.duration)}
                 >
                   <div className="text-4xl font-bold mb-2">{timer.duration}分</div>
                   <div className="text-xl font-medium">{timer.name}</div>
@@ -177,30 +184,35 @@ export default function Timer() {
             
             {/* コントロールボタン */}
             <div className="flex justify-center gap-4 flex-wrap">
-              {!isPaused ? (
+              {!isRunning ? (
                 <button
-                  onClick={pauseTimer}
-                  className="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition-colors font-semibold"
-                >
-                  一時停止
-                </button>
-              ) : (
-                <button
-                  onClick={resumeTimer}
+                  onClick={startTimer}
                   className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-semibold"
                 >
-                  再開
+                  スタート
                 </button>
+              ) : (
+                <>
+                  {!isPaused ? (
+                    <button
+                      onClick={pauseTimer}
+                      className="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition-colors font-semibold"
+                    >
+                      一時停止
+                    </button>
+                  ) : (
+                    <button
+                      onClick={resumeTimer}
+                      className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-semibold"
+                    >
+                      再開
+                    </button>
+                  )}
+                </>
               )}
               <button
-                onClick={stopTimer}
-                className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold"
-              >
-                停止
-              </button>
-              <button
                 onClick={resetTimer}
-                className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors font-semibold"
+                className="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors font-semibold"
               >
                 リセット
               </button>
