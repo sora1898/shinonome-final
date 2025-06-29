@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* スマホでの縮尺を統一するためのスタイル */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* カードのレスポンシブ対応 */
+@media (max-width: 640px) {
+  .card-responsive {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+} 
