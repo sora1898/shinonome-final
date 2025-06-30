@@ -79,22 +79,25 @@ export default function Home() {
   }, {} as Record<string, typeof books>);
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
-      {/* Ultra-Premium Keio Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-transparent to-violet-900/5"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'url(/IMG_1994.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.7,
-          filter: 'contrast(1.3) brightness(1.1)'
-        }}></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/70"></div>
+    <div className="min-h-screen overflow-x-hidden relative">
+      {/* Keio Background as Main */}
+      <div className="fixed inset-0">
+        <Image
+          src="/IMG_1994.jpg"
+          alt="Keio University"
+          fill
+          quality={100}
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
       </div>
       
+      {/* Content Layer */}
+      <div className="relative z-10">
+      
       {/* Ultra-Thin Premium Header */}
-      <header className={`sticky top-0 z-50 glass border-b border-gray-200/20 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+      <header className={`sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="container-main">
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center space-x-4">
@@ -236,7 +239,7 @@ export default function Home() {
             <div className="max-w-3xl mx-auto">
               <div className="relative">
                 <div className="absolute inset-0 gradient-premium rounded-3xl blur-3xl opacity-30"></div>
-                <div className="card p-10 md:p-16 relative">
+                <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-10 md:p-16 relative shadow-2xl border border-white/50">
                   <div className="text-center space-y-6">
                     <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500/10 to-violet-500/10 text-blue-600 rounded-3xl mb-6 animate-float shadow-lg">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -302,7 +305,7 @@ export default function Home() {
                   return (
                     <div key={book.id} className="group relative h-full">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-3xl blur-xl"></div>
-                      <div className="card p-8 h-full flex flex-col relative hover-lift">
+                      <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 h-full flex flex-col relative hover-lift shadow-xl border border-white/50">
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-4">
                           <h3 className="text-xl font-light text-gray-900 pr-2 group-hover:text-blue-600 transition-colors duration-500">
@@ -463,7 +466,7 @@ export default function Home() {
       </main>
       
       {/* Ultra-Premium Footer */}
-      <footer className={`mt-auto border-t border-gray-100/50 bg-white/80 backdrop-blur-xl transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <footer className={`mt-auto border-t border-white/30 bg-white/70 backdrop-blur-xl transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
@@ -515,6 +518,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

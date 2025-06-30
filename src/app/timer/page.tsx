@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const timers = [
   { id: 1, name: "英語", duration: 90, color: "bg-blue-500" },
@@ -103,22 +104,22 @@ export default function Timer() {
   const angle = (progress / 100) * 360;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Ultra-Premium Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-transparent to-violet-900/5"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'url(/IMG_1994.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.7,
-          filter: 'contrast(1.3) brightness(1.1)'
-        }}></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/70"></div>
+        <Image
+          src="/IMG_1994.jpg"
+          alt="Keio University"
+          fill
+          quality={100}
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
       </div>
       
       {/* Ultra-Thin Premium Header */}
-      <header className="sticky top-0 z-50 glass border-b border-gray-200/20">
+      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-all duration-500 hover:-translate-x-1">
@@ -142,7 +143,7 @@ export default function Timer() {
               {timers.map((timer) => (
                 <div
                   key={timer.id}
-                  className="card card-hover p-8 cursor-pointer group"
+                  className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 cursor-pointer group shadow-xl border border-white/50 transition-all duration-500 hover:shadow-2xl hover:bg-white/90"
                   onClick={() => selectTimer(timer.duration)}
                 >
                   <div className="text-center space-y-4">
@@ -167,7 +168,7 @@ export default function Timer() {
               <p className="text-gray-600">試験時間: {selectedTimer}分</p>
             </div>
             
-            <div className="card p-8 md:p-12">
+            <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50">
               {/* Modern Timer Display */}
               <div className="relative w-72 h-72 mx-auto mb-8">
                 <svg className="absolute inset-0 w-full h-full transform -rotate-90">

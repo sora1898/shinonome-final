@@ -102,7 +102,7 @@
   
   /* Ultra-Modern Card Styles */
   .card {
-    @apply bg-white/80 rounded-3xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.12)] transition-all duration-500 border border-gray-100/30 backdrop-blur-xl overflow-hidden;
+    @apply bg-white/85 rounded-3xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.12)] transition-all duration-500 border border-white/50 backdrop-blur-xl overflow-hidden;
   }
   
   .card-hover {
