@@ -13,10 +13,10 @@ export default function LegalPage() {
           backgroundImage: 'url(/IMG_1994.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.25,
-          filter: 'contrast(1.1) brightness(0.9)'
+          opacity: 0.4,
+          filter: 'contrast(1.2) brightness(0.95)'
         }}></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/60 to-white/80 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/85 backdrop-blur-[0.5px]"></div>
       </div>
       
       {/* Ultra-Thin Premium Header */}
