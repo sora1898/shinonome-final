@@ -2,15 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional Design System */
+/* Ultra-Modern Professional Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @layer base {
   :root {
-    /* Professional Color Palette */
-    --color-primary: 37 99 235; /* Blue-600 */
-    --color-primary-dark: 29 78 216; /* Blue-700 */
-    --color-primary-light: 59 130 246; /* Blue-500 */
-    --color-secondary: 88 28 135; /* Purple-700 */
-    --color-accent: 16 185 129; /* Emerald-500 */
+    /* Sophisticated Color Palette */
+    --color-primary: 59 130 246; /* Premium Blue */
+    --color-primary-dark: 37 99 235;
+    --color-primary-light: 96 165 250;
+    --color-secondary: 139 92 246; /* Elegant Purple */
+    --color-accent: 34 197 94; /* Refined Green */
     --color-neutral-900: 17 24 39;
     --color-neutral-800: 31 41 55;
     --color-neutral-700: 55 65 81;
@@ -61,6 +63,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   
   body {
@@ -68,37 +71,38 @@
     line-height: 1.6;
   }
   
-  /* Professional Typography */
+  /* Ultra-Refined Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
-    line-height: 1.2;
+    @apply font-light tracking-tight;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   
-  h1 { @apply text-4xl md:text-5xl; }
-  h2 { @apply text-3xl md:text-4xl; }
-  h3 { @apply text-2xl md:text-3xl; }
-  h4 { @apply text-xl md:text-2xl; }
-  h5 { @apply text-lg md:text-xl; }
-  h6 { @apply text-base md:text-lg; }
+  h1 { @apply text-5xl md:text-6xl font-extralight; }
+  h2 { @apply text-4xl md:text-5xl font-extralight; }
+  h3 { @apply text-3xl md:text-4xl font-light; }
+  h4 { @apply text-2xl md:text-3xl font-light; }
+  h5 { @apply text-xl md:text-2xl font-normal; }
+  h6 { @apply text-lg md:text-xl font-normal; }
 }
 
 @layer components {
-  /* Professional Button Styles */
+  /* Ultra-Thin Premium Button Styles */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform;
+    @apply inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-sm font-light tracking-wide uppercase text-white bg-gradient-to-r from-blue-500/90 to-violet-500/90 hover:from-blue-600 hover:to-violet-600 focus:outline-none focus:ring-2 focus:ring-blue-400/50 transition-all duration-500 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.5)] hover:shadow-[0_4px_30px_-2px_rgba(139,92,246,0.6)] hover:-translate-y-1 transform backdrop-blur-sm;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-base font-semibold rounded-xl text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-500/20 transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply inline-flex items-center justify-center px-8 py-3.5 border border-gray-200/50 text-sm font-light tracking-wide uppercase text-gray-700 bg-white/50 backdrop-blur-md hover:bg-white/70 hover:border-gray-300/50 focus:outline-none focus:ring-2 focus:ring-gray-400/30 transition-all duration-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transform;
   }
   
   .btn-success {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform;
+    @apply inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-sm font-light tracking-wide uppercase text-white bg-gradient-to-r from-emerald-500/90 to-teal-500/90 hover:from-emerald-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 transition-all duration-500 shadow-[0_4px_20px_-2px_rgba(34,197,94,0.5)] hover:shadow-[0_4px_30px_-2px_rgba(34,197,94,0.6)] hover:-translate-y-1 transform backdrop-blur-sm;
   }
   
-  /* Professional Card Styles */
+  /* Ultra-Modern Card Styles */
   .card {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100/50 overflow-hidden;
+    @apply bg-white/80 rounded-3xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.12)] transition-all duration-500 border border-gray-100/30 backdrop-blur-xl overflow-hidden;
   }
   
   .card-hover {
@@ -133,9 +137,9 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  /* Glass Effect */
+  /* Premium Glass Effect */
   .glass {
-    @apply bg-white/75 backdrop-blur-xl border border-white/20 shadow-xl;
+    @apply bg-white/70 backdrop-blur-2xl border border-white/30 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08)];
   }
   
   /* Gradient Text */
@@ -150,46 +154,84 @@
 }
 
 @layer utilities {
-  /* Smooth Animations */
+  /* Premium Smooth Animations */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
   
   @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
+    from { opacity: 0; transform: translateX(-30px); }
     to { opacity: 1; transform: translateX(0); }
   }
   
   @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; transform: scale(0.9); filter: blur(5px); }
+    to { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
   }
   
   .animate-fadeIn {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .animate-slideIn {
-    animation: slideIn 0.6s ease-out forwards;
+    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .animate-scaleIn {
-    animation: scaleIn 0.4s ease-out forwards;
+    animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
-  /* Professional Hover Effects */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.7) 50%, transparent 60%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+  
+  /* Ultra-Premium Hover Effects */
   .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
+    @apply transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl;
   }
   
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20;
+    @apply transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.35)];
   }
   
-  /* Custom Focus Styles */
+  .hover-scale {
+    @apply transition-all duration-500 hover:scale-105;
+  }
+  
+  /* Ultra-Thin Borders */
+  .border-ultra-thin {
+    @apply border border-gray-200/30;
+  }
+  
+  /* Premium Focus Styles */
   .focus-visible {
-    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-1 focus:ring-blue-400/50 focus:ring-offset-2;
+  }
+  
+  /* Luxury Gradients */
+  .gradient-premium {
+    @apply bg-gradient-to-br from-blue-400/10 via-violet-400/10 to-pink-400/10;
+  }
+  
+  .gradient-keio {
+    @apply bg-gradient-to-br from-blue-600/20 via-indigo-600/20 to-violet-600/20;
   }
 }
 
