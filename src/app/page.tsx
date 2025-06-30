@@ -90,14 +90,15 @@ export default function Home() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent"></div>
       </div>
       
       {/* Content Layer */}
       <div className="relative z-10">
       
       {/* Ultra-Thin Premium Header */}
-      <header className={`sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+      <header className={`sticky top-0 z-50 bg-gradient-to-b from-white/80 to-white/60 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.06)] transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="container-main">
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center space-x-4">
@@ -120,7 +121,7 @@ export default function Home() {
             <nav className="flex items-center space-x-3">
               <a
                 href="/timer" 
-                className="hidden sm:inline-flex items-center px-6 py-2 text-xs font-light tracking-wider uppercase text-gray-600 bg-white/50 border border-gray-200/30 rounded-full hover:bg-white/80 hover:border-gray-300/50 hover:text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-400/30 transition-all duration-500 backdrop-blur-md hover:shadow-lg hover:-translate-y-0.5 transform"
+                className="hidden sm:inline-flex items-center px-7 py-2.5 text-xs font-extralight tracking-[0.15em] uppercase text-gray-700 bg-white/40 border border-white/30 rounded-full hover:bg-white/60 hover:border-white/40 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-700 backdrop-blur-2xl hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transform group"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -130,12 +131,13 @@ export default function Home() {
               <a
                 href="/マークシート.pdf"
                 download
-                className="hidden sm:inline-flex items-center px-6 py-2 text-xs font-light tracking-wider uppercase text-white bg-gradient-to-r from-blue-500/90 to-violet-500/90 border border-transparent rounded-full hover:from-blue-600 hover:to-violet-600 focus:outline-none focus:ring-1 focus:ring-blue-400/30 transition-all duration-500 shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:shadow-[0_4px_30px_-4px_rgba(139,92,246,0.6)] hover:-translate-y-0.5 transform backdrop-blur-sm"
+                className="hidden sm:inline-flex items-center px-7 py-2.5 text-xs font-extralight tracking-[0.15em] uppercase text-white bg-gradient-to-r from-blue-500/80 via-violet-500/80 to-indigo-500/80 border border-white/20 rounded-full hover:from-blue-600/90 hover:via-violet-600/90 hover:to-indigo-600/90 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-700 shadow-[0_8px_32px_-8px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_48px_-12px_rgba(139,92,246,0.5)] hover:-translate-y-1 transform backdrop-blur-2xl group relative overflow-hidden"
               >
-                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+                <svg className="w-4 h-4 mr-2 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                解答用紙
+                <span className="relative z-10">解答用紙</span>
               </a>
               <button
                 onClick={toggleMobileMenu}
@@ -229,29 +231,36 @@ export default function Home() {
         <div className="flex flex-col gap-16 w-full">
           
           {/* Hero Section - Study Guide */}
-          <section className={`mb-20 animate-fadeIn`} style={{ animationDelay: '0.3s' }}>
-            <div className="text-center mb-12">
-              <div className="inline-block bg-white/70 backdrop-blur-xl rounded-3xl px-8 py-6 shadow-xl">
-                <h2 className="text-4xl md:text-5xl font-extralight text-gray-900 mb-6 tracking-tight leading-tight">慶應義塾大学法学部入試のすゝめ
-                  <span className="block text-3xl md:text-4xl mt-2 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">英語編</span>
-                </h2>
-                <p className="text-base text-gray-600 font-light tracking-wide">現役合格者による傾向と対策を徹底解説</p>
+          <section className={`mb-24 animate-fadeInScale`} style={{ animationDelay: '0.3s' }}>
+            <div className="text-center mb-16">
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-violet-500/20 blur-3xl animate-glow"></div>
+                <div className="relative bg-white/75 backdrop-blur-2xl rounded-[2.5rem] px-12 py-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-white/40">
+                  <h2 className="text-4xl md:text-6xl font-thin text-gray-900 mb-6 tracking-tight leading-tight">
+                    慶應義塾大学法学部入試のすゝめ
+                    <span className="block text-3xl md:text-5xl mt-3 bg-gradient-to-r from-blue-600 via-violet-600 to-indigo-600 bg-clip-text text-transparent font-extralight">英語編</span>
+                  </h2>
+                  <p className="text-lg text-gray-600 font-extralight tracking-wider">現役合格者による傾向と対策を徹底解説</p>
+                </div>
               </div>
             </div>
             <div className="max-w-3xl mx-auto">
               <div className="relative">
                 <div className="absolute inset-0 gradient-premium rounded-3xl blur-3xl opacity-30"></div>
-                <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-10 md:p-16 relative shadow-2xl border border-white/50">
-                  <div className="text-center space-y-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500/10 to-violet-500/10 text-blue-600 rounded-3xl mb-6 animate-float shadow-lg">
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </div>
-                    <h3 className="text-3xl font-light text-gray-900 mb-4">受験生時代に得たノウハウを
-                      <span className="font-normal bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">無料で公開</span>
+                <div className="bg-white/80 backdrop-blur-2xl rounded-[3rem] p-12 md:p-20 relative shadow-[0_30px_90px_-20px_rgba(0,0,0,0.15)] border border-white/30 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-violet-400/10 blur-3xl rounded-full translate-x-32 -translate-y-32"></div>
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-emerald-400/10 to-teal-400/10 blur-3xl rounded-full -translate-x-32 translate-y-32"></div>
+                  <div className="relative text-center space-y-8">
+                    <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-500/10 to-violet-500/10 text-blue-600 rounded-[2rem] mb-8 animate-float shadow-xl border border-blue-200/20">
+                      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-thin text-gray-900 mb-6 leading-tight">
+                      受験生時代に得たノウハウを
+                      <span className="block mt-2 text-4xl md:text-5xl font-extralight bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">無料で公開</span>
                     </h3>
-                    <p className="text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="text-gray-600 max-w-2xl mx-auto font-extralight text-lg leading-relaxed tracking-wide">
                       地方の平凡な受験生から慶應法学部に合格した筆者が、
                       <br className="hidden md:block" />
                       独自の攻略法と合格への戦略を余すことなく公開します。
@@ -309,7 +318,8 @@ export default function Home() {
                   return (
                     <div key={book.id} className="group relative h-full">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-3xl blur-xl"></div>
-                      <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 h-full flex flex-col relative hover-lift shadow-xl border border-white/50">
+                      <div className="bg-white/80 backdrop-blur-2xl rounded-[2rem] p-10 h-full flex flex-col relative hover-lift shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] border border-white/30 transition-all duration-700 hover:bg-white/85 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.15)] group overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-4">
                           <h3 className="text-xl font-light text-gray-900 pr-2 group-hover:text-blue-600 transition-colors duration-500">
@@ -470,7 +480,7 @@ export default function Home() {
       </main>
       
       {/* Ultra-Premium Footer */}
-      <footer className={`mt-auto border-t border-white/30 bg-white/70 backdrop-blur-xl transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <footer className={`mt-auto border-t border-white/20 bg-gradient-to-b from-white/60 to-white/70 backdrop-blur-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
@@ -485,11 +495,11 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-light text-gray-900 tracking-wide">Shinonome Study Group</h3>
-                  <p className="text-xs text-gray-500 font-light uppercase tracking-wider">慶應義塾大学法学部</p>
+                  <h3 className="font-extralight text-gray-900 tracking-wider">Shinonome Study Group</h3>
+                  <p className="text-xs text-gray-500 font-thin uppercase tracking-[0.15em]">慶應義塾大学法学部</p>
                 </div>
               </div>
-              <p className="text-sm text-gray-500 max-w-md font-light leading-relaxed">
+              <p className="text-sm text-gray-600 max-w-md font-extralight leading-loose tracking-wide">
                 現役慶應法学部生が運営する、受験生のための学習支援サービス。
                 <br className="hidden md:block" />
                 独自の攻略法と合格への戦略を提供します。
@@ -497,7 +507,7 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="font-light text-gray-900 mb-4 tracking-wide uppercase text-sm">コンテンツ</h4>
+              <h4 className="font-thin text-gray-900 mb-4 tracking-[0.15em] uppercase text-sm">コンテンツ</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/guide" className="text-gray-600 hover:text-blue-600 transition-colors">入試のすゝめ</a></li>
                 <li><a href="/timer" className="text-gray-600 hover:text-blue-600 transition-colors">試験タイマー</a></li>
@@ -506,7 +516,7 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="font-semibold text-gray-900 mb-4">法的情報</h4>
+              <h4 className="font-thin text-gray-900 mb-4 tracking-[0.15em] uppercase text-sm">法的情報</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/legal" className="text-gray-600 hover:text-blue-600 transition-colors">特定商取引法に基づく表記</a></li>
                 <li><a href="/privacy" className="text-gray-600 hover:text-blue-600 transition-colors">プライバシーポリシー</a></li>

@@ -115,11 +115,12 @@ export default function Timer() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent"></div>
       </div>
       
       {/* Ultra-Thin Premium Header */}
-      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/20">
+      <header className="sticky top-0 z-50 bg-gradient-to-b from-white/80 to-white/60 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-all duration-500 hover:-translate-x-1">
@@ -143,7 +144,7 @@ export default function Timer() {
               {timers.map((timer) => (
                 <div
                   key={timer.id}
-                  className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 cursor-pointer group shadow-xl border border-white/50 transition-all duration-500 hover:shadow-2xl hover:bg-white/90"
+                  className="bg-white/80 backdrop-blur-2xl rounded-[2rem] p-10 cursor-pointer group shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] border border-white/30 transition-all duration-700 hover:bg-white/85 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.15)] hover:-translate-y-1 transform"
                   onClick={() => selectTimer(timer.duration)}
                 >
                   <div className="text-center space-y-4">
@@ -168,7 +169,8 @@ export default function Timer() {
               <p className="text-gray-600">試験時間: {selectedTimer}分</p>
             </div>
             
-            <div className="bg-white/85 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50">
+            <div className="bg-white/80 backdrop-blur-2xl rounded-[3rem] p-10 md:p-16 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.15)] border border-white/30 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-violet-400/10 blur-3xl rounded-full translate-x-32 -translate-y-32"></div>
               {/* Modern Timer Display */}
               <div className="relative w-72 h-72 mx-auto mb-8">
                 <svg className="absolute inset-0 w-full h-full transform -rotate-90">
