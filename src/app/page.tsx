@@ -79,148 +79,208 @@ export default function Home() {
   }, {} as Record<string, typeof books>);
 
   return (
-    <div className="min-h-screen font-[family-name:var(--font-geist-sans)] relative" style={{
-      backgroundImage: 'url(/IMG_1994.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed'
-    }}>
-      {/* 背景オーバーレイ - 全体に適用 */}
-      <div className="absolute inset-0 bg-white bg-opacity-60"></div>
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-gray-50">
+      {/* Professional Background Pattern */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'url(/IMG_1994.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.05
+        }}></div>
+      </div>
       
-      {/* ヘッダー */}
-      <div className={`relative w-full text-center bg-gradient-to-r from-purple-50 via-blue-50 via-indigo-50 via-blue-50 to-purple-50 border-b border-purple-200 p-2 z-40 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex items-center justify-between max-w-6xl mx-auto px-2">
-          <div className="flex items-center">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mr-2 sm:mr-3 overflow-hidden">
-        <Image
-                src="/IMG_3593.png" 
-                alt="Shinonome Logo" 
-                width={64} 
-                height={64}
-                className="w-full h-full object-cover"
-              />
+      {/* Professional Header */}
+      <header className={`sticky top-0 z-50 glass border-b border-gray-200 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+        <div className="container-main">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            <div className="flex items-center space-x-4">
+              <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/IMG_3593.png" 
+                  alt="Shinonome Logo" 
+                  width={56} 
+                  height={56}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h1 className="text-lg md:text-xl font-bold text-gray-900">Shinonome Study Group</h1>
+                <p className="text-xs md:text-sm text-gray-600">慶應義塾大学法学部 合格への道</p>
+              </div>
             </div>
-            <div className="text-left">
-              <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent leading-tight">Shinonome Study Group</h1>
-              <p className="text-xs text-gray-600 font-medium leading-tight">慶應義塾大学法学部 合格への道</p>
-            </div>
-          </div>
 
-          {/* 右側のリンク */}
-          <div className="flex items-center gap-2 sm:gap-4">
-          <a
-              href="/timer" 
-              className="bg-blue-600 text-white px-2 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm font-medium"
-          >
-              ⏱️ タイマー
-          </a>
-            <a
-              href="/マークシート.pdf"
-              download
-              className="bg-green-600 text-white px-2 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-xs sm:text-sm font-medium"
-            >
-              📝 解答用紙
-            </a>
-            {/* ハンバーガーメニューボタン */}
-            <button
-              onClick={toggleMobileMenu}
-              className="lg:hidden bg-gray-600 text-white p-2 rounded-lg hover:bg-gray-700 transition-colors"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Navigation Actions */}
+            <nav className="flex items-center space-x-3">
+              <a
+                href="/timer" 
+                className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                タイマー
+              </a>
+              <a
+                href="/マークシート.pdf"
+                download
+                className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                解答用紙
+              </a>
+              <button
+                onClick={toggleMobileMenu}
+                className="lg:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:bg-gray-100 rounded-lg transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </nav>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* モバイルメニュー */}
+      {/* Professional Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="fixed right-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform">
-            <div className="p-4">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-bold text-gray-800">メニュー</h3>
+        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-50" onClick={toggleMobileMenu}>
+          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-2xl transform transition-transform" onClick={e => e.stopPropagation()}>
+            <div className="h-full flex flex-col">
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900">メニュー</h3>
                 <button
                   onClick={toggleMobileMenu}
-                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
                 >
-                  ×
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
-              <div className="space-y-4">
-                <a 
-                  href="/legal" 
-                  className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                  onClick={toggleMobileMenu}
-                >
-                  特定商取引法に基づく表記
-        </a>
-        <a
-                  href="/privacy" 
-                  className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                  onClick={toggleMobileMenu}
-                >
-                  プライバシーポリシー
-        </a>
-        <a
-                  href="/terms" 
-                  className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                  onClick={toggleMobileMenu}
-                >
-                  利用規約
-                </a>
+              
+              <div className="flex-1 py-6">
+                <div className="px-4 space-y-2">
+                  <a 
+                    href="/timer" 
+                    className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                    onClick={toggleMobileMenu}
+                  >
+                    <svg className="w-5 h-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    タイマー
+                  </a>
+                  <a 
+                    href="/マークシート.pdf"
+                    download
+                    className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                    onClick={toggleMobileMenu}
+                  >
+                    <svg className="w-5 h-5 mr-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    解答用紙ダウンロード
+                  </a>
+                </div>
+                
+                <div className="mt-8 px-4">
+                  <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">その他</p>
+                  <div className="mt-3 space-y-2">
+                    <a 
+                      href="/legal" 
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                      onClick={toggleMobileMenu}
+                    >
+                      特定商取引法に基づく表記
+                    </a>
+                    <a
+                      href="/privacy" 
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                      onClick={toggleMobileMenu}
+                    >
+                      プライバシーポリシー
+                    </a>
+                    <a
+                      href="/terms" 
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                      onClick={toggleMobileMenu}
+                    >
+                      利用規約
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
       
-      {/* メインコンテンツ */}
-      <div className={`relative max-w-6xl mx-auto py-8 px-4 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      {/* Main Content */}
+      <main className={`container-main py-8 md:py-12 transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <div className="flex flex-col gap-8 w-full">
           
-          {/* 慶應法学部入試のすゝめセクション */}
-          <div className={`w-full transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-2xl sm:text-3xl font-black mb-6 text-indigo-900 font-serif tracking-wide drop-shadow-sm">慶應義塾大学法学部入試のすゝめ 英語編</h2>
-            <div className="bg-white bg-opacity-95 rounded-lg p-4 sm:p-8 max-w-2xl mx-auto shadow-lg border">
-              <div className="flex flex-col gap-4 sm:gap-6">
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-3 text-indigo-700">傾向と対策を現役生が徹底解説</h3>
-                  <p className="text-gray-600 mb-3 text-sm">受験生時代に得たノウハウを無料で公開！！</p>
-                </div>
-                <div className="flex flex-col gap-6 w-full">
-                  <button
-                    onClick={() => {
-                      window.open('/guide', '_blank');
-                    }}
-                    className="w-full max-w-full mx-auto py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-blue-600 hover:bg-blue-700"
-                  >
-                    慶應義塾大学法学部入試のすゝめを見る
-                  </button>
-                  <button
-                    onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/慶法　英語　すゝめ.pdf';
-                      link.download = '慶法　英語　すゝめ.pdf';
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                    }}
-                    className="w-full max-w-full mx-auto py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-green-600 hover:bg-green-700"
-                  >
-                    PDF形式でダウンロード
-                  </button>
+          {/* Hero Section - Study Guide */}
+          <section className={`mb-16 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">慶應義塾大学法学部入試のすゝめ 英語編</h2>
+              <p className="text-lg text-gray-600">現役合格者による傾向と対策を徹底解説</p>
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <div className="card p-8 md:p-12">
+                <div className="text-center space-y-4">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">受験生時代に得たノウハウを無料で公開</h3>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    地方の平凡な受験生から慶應法学部に合格した筆者が、独自の攻略法と合格への戦略を余すことなく公開します。
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                    <button
+                      onClick={() => window.open('/guide', '_blank')}
+                      className="btn-primary"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      オンラインで読む
+                    </button>
+                    <button
+                      onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = '/慶法　英語　すゝめ.pdf';
+                        link.download = '慶法　英語　すゝめ.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      }}
+                      className="btn-success"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      PDF形式でダウンロード
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
           {Object.entries(groupedBooks).map(([category, categoryBooks], categoryIndex) => (
-            <div key={category} className={`w-full transition-all duration-700 delay-${(categoryIndex + 2) * 200} ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <h2 className="text-2xl sm:text-3xl font-black mb-6 text-indigo-900 font-serif tracking-wide drop-shadow-sm">{category}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <section key={category} className={`mb-16 animate-fadeIn`} style={{ animationDelay: `${(categoryIndex + 1) * 0.1}s` }}>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{category}</h2>
+                <div className="h-px flex-1 bg-gray-200 ml-4"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryBooks.map((book, bookIndex) => {
                   const previewId = book.id === "1" ? "english1" : 
                                    book.id === "2" ? "english2" : 
@@ -229,20 +289,29 @@ export default function Home() {
                                    book.id === "5" ? "data" : "guide";
                   
                   return (
-                    <div key={book.id} className={`border rounded-lg p-4 h-64 flex flex-col justify-between bg-white bg-opacity-95 shadow-lg transition-all duration-500 delay-${(categoryIndex * 100) + (bookIndex * 100)} ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+                    <div key={book.id} className="card card-hover p-6 h-full flex flex-col">
                       <div className="flex-1">
-                        <h3 className="text-lg sm:text-xl font-semibold mb-2 text-indigo-700 select-none">
-                          {book.title}
-                        </h3>
-                        <p className="text-gray-600 mb-2 text-sm">{book.description}</p>
-                        {book.id === "1" ? (
-                          <span className="font-bold text-base sm:text-lg text-green-600">無料</span>
-                        ) : (
-                          <span className="font-bold text-base sm:text-lg">¥{book.price.toLocaleString()}</span>
-                        )}
-                        <p className="text-red-600 text-sm font-semibold mt-1">Coming Soon</p>
+                        <div className="flex items-start justify-between mb-4">
+                          <h3 className="text-xl font-bold text-gray-900 pr-2">
+                            {book.title}
+                          </h3>
+                          {book.id === "1" && (
+                            <span className="badge badge-success">無料</span>
+                          )}
+                        </div>
+                        <p className="text-gray-600 mb-4 line-clamp-2">{book.description}</p>
+                        <div className="flex items-baseline justify-between mb-4">
+                          {book.id === "1" ? (
+                            <span className="text-2xl font-bold text-emerald-600">無料</span>
+                          ) : (
+                            <span className="text-2xl font-bold text-gray-900">¥{book.price.toLocaleString()}</span>
+                          )}
+                          {book.id !== "1" && (
+                            <span className="text-sm text-amber-600 font-medium">Coming Soon</span>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex flex-col gap-3 mt-2 items-center">
+                      <div className="space-y-3 mt-auto">
                         {book.id === "1" ? (
                           <button
                             onClick={() => {
@@ -253,17 +322,21 @@ export default function Home() {
                               link.click();
                               document.body.removeChild(link);
                             }}
-                            className="w-full max-w-full mx-auto py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-green-600 hover:bg-green-700"
+                            className="btn-success w-full"
                           >
-                            PDF形式でダウンロード
+                            <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            無料ダウンロード
                           </button>
                         ) : (
                           <>
                             <button
                               onClick={() => handlePurchase(book.id)}
-                              className="w-full max-w-full mx-auto py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-blue-600 hover:bg-blue-700"
+                              className="btn-primary w-full"
+                              disabled={true}
                             >
-                              購入
+                              購入する（準備中）
                             </button>
                             {book.id === "3" && (
                               <button
@@ -275,9 +348,9 @@ export default function Home() {
                                   link.click();
                                   document.body.removeChild(link);
                                 }}
-                                className="w-full max-w-full mx-auto py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-green-600 hover:bg-green-700"
+                                className="btn-secondary w-full text-sm"
                               >
-                                試作品はこちらからダウンロード（公開時は消します）
+                                試作品をダウンロード
                               </button>
                             )}
                           </>
@@ -287,53 +360,77 @@ export default function Home() {
                   );
                 })}
               </div>
-            </div>
+            </section>
           ))}
         </div>
         
-        {/* モーダルオーバーレイ */}
+        {/* Professional Modal */}
         {showPurchaseInfo && (
-          <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border transform transition-all">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">購入確認</h2>
+          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all animate-scaleIn">
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">購入確認</h2>
                 <button
                   onClick={cancelPurchase}
-                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
                 >
-                  ×
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
               
               {showPurchaseInfo && (() => {
                 const book = books.find(b => b.id === showPurchaseInfo);
                 return book ? (
-                  <div className="space-y-4">
-                    <div className="border-b pb-4">
-                      <h3 className="text-xl font-semibold mb-2">{book.title}</h3>
-                      <p className="text-gray-600 mb-2">{book.description}</p>
-                      <p className="text-2xl font-bold text-blue-600">¥{book.price.toLocaleString()}</p>
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{book.title}</h3>
+                      <p className="text-gray-600 mb-4">{book.description}</p>
+                      <div className="flex items-baseline">
+                        <span className="text-3xl font-bold text-gray-900">¥{book.price.toLocaleString()}</span>
+                        <span className="text-gray-500 ml-2">（税込）</span>
+                      </div>
                     </div>
                     
-                    <div className="bg-yellow-50 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2">ご購入について</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• この商品は電子書籍です</li>
-                        <li>• 購入後、ダウンロードリンクをメールでお送りします</li>
-                        <li>• PDF形式でダウンロードいただけます</li>
-                        <li>• 返品・交換はできません</li>
+                    <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+                      <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        ご購入について
+                      </h4>
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="flex items-start">
+                          <svg className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          この商品は電子書籍（PDF形式）です
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          購入後、ダウンロードリンクをメールでお送りします
+                        </li>
+                        <li className="flex items-start">
+                          <svg className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          商品の性質上、返品・交換はお受けできません
+                        </li>
                       </ul>
                     </div>
                     
-                    <div className="flex gap-4 pt-4">
+                    <div className="flex gap-4 pt-2">
                       <button
-                        className="py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-green-600 hover:bg-green-700"
+                        className="btn-primary flex-1"
                         onClick={() => confirmPurchase(showPurchaseInfo)}
                       >
-                        購入確定
+                        購入を確定する
                       </button>
                       <button
-                        className="py-3 px-6 rounded-lg text-white text-lg font-bold transition-colors duration-200 text-center bg-gray-500 hover:bg-gray-600"
+                        className="btn-secondary flex-1"
                         onClick={cancelPurchase}
                       >
                         キャンセル
@@ -345,34 +442,56 @@ export default function Home() {
             </div>
           </div>
         )}
-      </div>
+      </main>
       
-      <footer className={`relative mt-8 py-4 bg-gray-100 border-t border-gray-200 transition-opacity duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <div className="flex flex-col gap-2 text-xs text-gray-600">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
-              <a 
-                href="/legal" 
-                className="hover:text-blue-600 hover:underline"
-              >
-                特定商取引法に基づく表記
-              </a>
-              <span className="hidden sm:inline">|</span>
-              <a 
-                href="/privacy" 
-                className="hover:text-blue-600 hover:underline"
-              >
-                プライバシーポリシー
-              </a>
-              <span className="hidden sm:inline">|</span>
-              <a 
-                href="/terms" 
-                className="hover:text-blue-600 hover:underline"
-              >
-                利用規約
-              </a>
+      {/* Professional Footer */}
+      <footer className={`mt-auto border-t border-gray-200 bg-white transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="container-main py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 rounded-lg overflow-hidden">
+                  <Image
+                    src="/IMG_3593.png" 
+                    alt="Shinonome Logo" 
+                    width={40} 
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900">Shinonome Study Group</h3>
+                  <p className="text-sm text-gray-600">慶應義塾大学法学部 合格への道</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 max-w-md">
+                現役慶應法学部生が運営する、受験生のための学習支援サービス。独自の攻略法と合格への戦略を提供します。
+              </p>
             </div>
-            <div>© 2024 Shinonome Study Group. All rights reserved.</div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">コンテンツ</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/guide" className="text-gray-600 hover:text-blue-600 transition-colors">入試のすゝめ</a></li>
+                <li><a href="/timer" className="text-gray-600 hover:text-blue-600 transition-colors">試験タイマー</a></li>
+                <li><a href="/マークシート.pdf" className="text-gray-600 hover:text-blue-600 transition-colors">解答用紙</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">法的情報</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/legal" className="text-gray-600 hover:text-blue-600 transition-colors">特定商取引法に基づく表記</a></li>
+                <li><a href="/privacy" className="text-gray-600 hover:text-blue-600 transition-colors">プライバシーポリシー</a></li>
+                <li><a href="/terms" className="text-gray-600 hover:text-blue-600 transition-colors">利用規約</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <p className="text-center text-sm text-gray-600">
+              © 2024 Shinonome Study Group. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

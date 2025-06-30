@@ -103,123 +103,166 @@ export default function Timer() {
   const angle = (progress / 100) * 360;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* ヘッダー */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium">
-              ← ホームに戻る
+    <div className="min-h-screen bg-gray-50">
+      {/* Professional Background Pattern */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+      </div>
+      
+      {/* Professional Header */}
+      <header className="sticky top-0 z-50 glass border-b border-gray-200">
+        <div className="container-main">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              ホームに戻る
             </Link>
-            <h1 className="text-2xl font-bold text-gray-800">試験タイマー</h1>
-            <div className="w-20"></div>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">試験タイマー</h1>
+            <div className="w-32"></div>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <main className="container-main py-12">
         {!selectedTimer ? (
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">タイマーを選択してください</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="text-center animate-fadeIn">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">タイマーを選択してください</h2>
+            <p className="text-gray-600 mb-12">科目に応じた試験時間を設定します</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {timers.map((timer) => (
                 <div
                   key={timer.id}
-                  className={`${timer.color} text-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105`}
+                  className="card card-hover p-8 cursor-pointer group"
                   onClick={() => selectTimer(timer.duration)}
                 >
-                  <div className="text-4xl font-bold mb-2">{timer.duration}分</div>
-                  <div className="text-xl font-medium">{timer.name}</div>
+                  <div className="text-center space-y-4">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full shadow-lg group-hover:shadow-xl transition-shadow">
+                      <span className="text-2xl font-bold">{timer.duration}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{timer.name}</h3>
+                      <p className="text-gray-500">{timer.duration}分</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <div className="text-center">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <div className="max-w-4xl mx-auto animate-fadeIn">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 {timers.find(t => t.duration === selectedTimer)?.name}
               </h2>
-              
-              {/* 時計の視覚化 */}
-              <div className="relative w-64 h-64 mx-auto mb-8">
-                <div className="absolute inset-0 border-8 border-gray-200 rounded-full"></div>
-                <div 
-                  className="absolute inset-0 border-8 border-blue-500 rounded-full transition-all duration-1000"
-                  style={{
-                    clipPath: `polygon(50% 50%, 50% 0%, ${50 + 50 * Math.cos((angle - 90) * Math.PI / 180)}% ${50 + 50 * Math.sin((angle - 90) * Math.PI / 180)}%)`
-                  }}
-                ></div>
+              <p className="text-gray-600">試験時間: {selectedTimer}分</p>
+            </div>
+            
+            <div className="card p-8 md:p-12">
+              {/* Modern Timer Display */}
+              <div className="relative w-72 h-72 mx-auto mb-8">
+                <svg className="absolute inset-0 w-full h-full transform -rotate-90">
+                  <circle
+                    cx="144"
+                    cy="144"
+                    r="120"
+                    stroke="currentColor"
+                    strokeWidth="12"
+                    fill="none"
+                    className="text-gray-200"
+                  />
+                  <circle
+                    cx="144"
+                    cy="144"
+                    r="120"
+                    stroke="currentColor"
+                    strokeWidth="12"
+                    fill="none"
+                    strokeDasharray={`${2 * Math.PI * 120}`}
+                    strokeDashoffset={`${2 * Math.PI * 120 * (1 - progress / 100)}`}
+                    className="text-blue-600 transition-all duration-1000"
+                  />
+                </svg>
                 
-                {/* 時計の針 */}
-                <div 
-                  className="absolute top-1/2 left-1/2 w-1 h-20 bg-blue-600 transform -translate-x-1/2 -translate-y-full origin-bottom transition-transform duration-1000"
-                  style={{ transform: `translate(-50%, -100%) rotate(${angle}deg)` }}
-                ></div>
-                
-                {/* 中心点 */}
-                <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-                
-                {/* 時間表示 */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-4xl font-bold text-gray-800 font-mono">
+                {/* Digital Time Display */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <div className="text-5xl md:text-6xl font-bold text-gray-900 font-mono tabular-nums">
                     {formatTime(timeLeft)}
+                  </div>
+                  <div className="text-gray-500 mt-2">
+                    {isRunning ? (isPaused ? '一時停止中' : '実行中') : '準備完了'}
                   </div>
                 </div>
               </div>
               
-              {/* プログレスバー */}
-              <div className="w-full max-w-md mx-auto mb-8">
-                <div className="bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-blue-500 h-3 rounded-full transition-all duration-1000"
-                    style={{ width: `${progress}%` }}
-                  ></div>
+              {/* Progress Information */}
+              <div className="space-y-4 mb-8">
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span>経過時間: {formatTime(initialTime - timeLeft)}</span>
+                  <span>残り時間: {formatTime(timeLeft)}</span>
                 </div>
-                <div className="text-sm text-gray-600 mt-2">
-                  進捗: {Math.round(progress)}%
+                <div className="bg-gray-100 rounded-full h-2 overflow-hidden">
+                  <div 
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 h-full transition-all duration-1000"
+                    style={{ width: `${progress}%` }}
+                  />
                 </div>
               </div>
-            </div>
-            
-            {/* コントロールボタン */}
-            <div className="flex justify-center gap-4 flex-wrap">
-              {!isRunning ? (
+              
+              {/* Control Buttons */}
+              <div className="flex justify-center gap-4 flex-wrap">
+                {!isRunning ? (
+                  <button
+                    onClick={startTimer}
+                    className="btn-primary"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    スタート
+                  </button>
+                ) : (
+                  <>
+                    {!isPaused ? (
+                      <button
+                        onClick={pauseTimer}
+                        className="btn-secondary"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        一時停止
+                      </button>
+                    ) : (
+                      <button
+                        onClick={resumeTimer}
+                        className="btn-primary"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        再開
+                      </button>
+                    )}
+                  </>
+                )}
                 <button
-                  onClick={startTimer}
-                  className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-semibold"
+                  onClick={resetTimer}
+                  className="btn-secondary"
                 >
-                  スタート
+                  <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  リセット
                 </button>
-              ) : (
-                <>
-                  {!isPaused ? (
-                    <button
-                      onClick={pauseTimer}
-                      className="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition-colors font-semibold"
-                    >
-                      一時停止
-                    </button>
-                  ) : (
-                    <button
-                      onClick={resumeTimer}
-                      className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-semibold"
-                    >
-                      再開
-                    </button>
-                  )}
-                </>
-              )}
-              <button
-                onClick={resetTimer}
-                className="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors font-semibold"
-              >
-                リセット
-              </button>
+              </div>
             </div>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
-} 
+}
