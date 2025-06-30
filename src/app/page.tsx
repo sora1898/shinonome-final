@@ -231,10 +231,12 @@ export default function Home() {
           {/* Hero Section - Study Guide */}
           <section className={`mb-20 animate-fadeIn`} style={{ animationDelay: '0.3s' }}>
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-extralight text-gray-900 mb-6 tracking-tight leading-tight">慶應義塾大学法学部入試のすゝめ
-                <span className="block text-3xl md:text-4xl mt-2 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">英語編</span>
-              </h2>
-              <p className="text-base text-gray-500 font-light tracking-wide">現役合格者による傾向と対策を徹底解説</p>
+              <div className="inline-block bg-white/70 backdrop-blur-xl rounded-3xl px-8 py-6 shadow-xl">
+                <h2 className="text-4xl md:text-5xl font-extralight text-gray-900 mb-6 tracking-tight leading-tight">慶應義塾大学法学部入試のすゝめ
+                  <span className="block text-3xl md:text-4xl mt-2 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">英語編</span>
+                </h2>
+                <p className="text-base text-gray-600 font-light tracking-wide">現役合格者による傾向と対策を徹底解説</p>
+              </div>
             </div>
             <div className="max-w-3xl mx-auto">
               <div className="relative">
@@ -291,8 +293,10 @@ export default function Home() {
           {Object.entries(groupedBooks).map(([category, categoryBooks], categoryIndex) => (
             <section key={category} className={`mb-20 animate-fadeIn`} style={{ animationDelay: `${(categoryIndex + 1) * 0.15}s` }}>
               <div className="flex items-center justify-between mb-12">
-                <h2 className="text-2xl md:text-3xl font-extralight text-gray-900 tracking-wide">{category}</h2>
-                <div className="h-[0.5px] flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent ml-8"></div>
+                <div className="bg-white/60 backdrop-blur-xl rounded-full px-6 py-2">
+                  <h2 className="text-2xl md:text-3xl font-extralight text-gray-900 tracking-wide">{category}</h2>
+                </div>
+                <div className="h-[0.5px] flex-1 bg-gradient-to-r from-transparent via-white/40 to-transparent ml-8"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryBooks.map((book, bookIndex) => {

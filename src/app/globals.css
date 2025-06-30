@@ -233,6 +233,19 @@
   .gradient-keio {
     @apply bg-gradient-to-br from-blue-600/20 via-indigo-600/20 to-violet-600/20;
   }
+  
+  /* Ultra-thin Text Shadows for Readability */
+  .text-shadow-soft {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .text-shadow-medium {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  
+  .text-shadow-strong {
+    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
 }
 
 /* Mobile Responsiveness */
