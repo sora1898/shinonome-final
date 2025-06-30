@@ -82,21 +82,22 @@ export default function Home() {
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)] bg-gray-50">
       {/* Professional Background Pattern */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white/85 to-purple-50/90"></div>
         <div className="absolute inset-0" style={{
           backgroundImage: 'url(/IMG_1994.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.05
+          opacity: 0.15,
+          filter: 'brightness(1.1)'
         }}></div>
       </div>
       
       {/* Professional Header */}
-      <header className={`sticky top-0 z-50 glass border-b border-gray-200 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+      <header className={`sticky top-0 z-50 glass border-b border-white/20 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
         <div className="container-main">
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center space-x-4">
-              <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 transform">
                 <Image
                   src="/IMG_3593.png" 
                   alt="Shinonome Logo" 
@@ -106,8 +107,8 @@ export default function Home() {
                 />
               </div>
               <div>
-                <h1 className="text-lg md:text-xl font-bold text-gray-900">Shinonome Study Group</h1>
-                <p className="text-xs md:text-sm text-gray-600">慶應義塾大学法学部 合格への道</p>
+                <h1 className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">Shinonome Study Group</h1>
+                <p className="text-xs md:text-sm text-gray-600 font-medium">慶應義塾大学法学部 合格への道</p>
               </div>
             </div>
 
@@ -115,7 +116,7 @@ export default function Home() {
             <nav className="flex items-center space-x-3">
               <a
                 href="/timer" 
-                className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+                className="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 transform"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -125,7 +126,7 @@ export default function Home() {
               <a
                 href="/マークシート.pdf"
                 download
-                className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+                className="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 border border-transparent rounded-xl hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -134,7 +135,7 @@ export default function Home() {
               </a>
               <button
                 onClick={toggleMobileMenu}
-                className="lg:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:bg-gray-100 rounded-lg transition-colors"
+                className="lg:hidden p-2.5 text-gray-700 hover:text-blue-600 focus:outline-none hover:bg-blue-50/70 rounded-xl transition-all duration-300 hover:shadow-md"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -147,8 +148,8 @@ export default function Home() {
 
       {/* Professional Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-50" onClick={toggleMobileMenu}>
-          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-2xl transform transition-transform" onClick={e => e.stopPropagation()}>
+        <div className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-md z-50" onClick={toggleMobileMenu}>
+          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-2xl transform transition-transform rounded-l-3xl" onClick={e => e.stopPropagation()}>
             <div className="h-full flex flex-col">
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900">メニュー</h3>
@@ -226,18 +227,20 @@ export default function Home() {
           {/* Hero Section - Study Guide */}
           <section className={`mb-16 animate-fadeIn`} style={{ animationDelay: '0.2s' }}>
             <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">慶應義塾大学法学部入試のすゝめ 英語編</h2>
-              <p className="text-lg text-gray-600">現役合格者による傾向と対策を徹底解説</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">慶應義塾大学法学部入試のすゝめ 英語編</h2>
+              <p className="text-lg text-gray-600 font-medium">現役合格者による傾向と対策を徹底解説</p>
             </div>
             <div className="max-w-3xl mx-auto">
-              <div className="card p-8 md:p-12">
+              <div className="card p-8 md:p-12 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50"></div>
+                <div className="relative z-10">
                 <div className="text-center space-y-4">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">受験生時代に得たノウハウを無料で公開</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 tracking-tight">受験生時代に得たノウハウを無料で公開</h3>
                   <p className="text-gray-600 max-w-2xl mx-auto">
                     地方の平凡な受験生から慶應法学部に合格した筆者が、独自の攻略法と合格への戦略を余すことなく公開します。
                   </p>
@@ -270,6 +273,7 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </section>
@@ -277,8 +281,8 @@ export default function Home() {
           {Object.entries(groupedBooks).map(([category, categoryBooks], categoryIndex) => (
             <section key={category} className={`mb-16 animate-fadeIn`} style={{ animationDelay: `${(categoryIndex + 1) * 0.1}s` }}>
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{category}</h2>
-                <div className="h-px flex-1 bg-gray-200 ml-4"></div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{category}</h2>
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent ml-6"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryBooks.map((book, bookIndex) => {
@@ -289,25 +293,27 @@ export default function Home() {
                                    book.id === "5" ? "data" : "guide";
                   
                   return (
-                    <div key={book.id} className="card card-hover p-6 h-full flex flex-col">
+                    <div key={book.id} className="card card-hover p-6 h-full flex flex-col group relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                      <div className="relative z-10 flex flex-col h-full">
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-4">
-                          <h3 className="text-xl font-bold text-gray-900 pr-2">
+                          <h3 className="text-xl font-bold text-gray-900 pr-2 group-hover:text-blue-700 transition-colors duration-300">
                             {book.title}
                           </h3>
                           {book.id === "1" && (
-                            <span className="badge badge-success">無料</span>
+                            <span className="badge badge-success animate-pulse">無料</span>
                           )}
                         </div>
-                        <p className="text-gray-600 mb-4 line-clamp-2">{book.description}</p>
+                        <p className="text-gray-600 mb-4 line-clamp-2 font-medium">{book.description}</p>
                         <div className="flex items-baseline justify-between mb-4">
                           {book.id === "1" ? (
-                            <span className="text-2xl font-bold text-emerald-600">無料</span>
+                            <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-700 bg-clip-text text-transparent">無料</span>
                           ) : (
                             <span className="text-2xl font-bold text-gray-900">¥{book.price.toLocaleString()}</span>
                           )}
                           {book.id !== "1" && (
-                            <span className="text-sm text-amber-600 font-medium">Coming Soon</span>
+                            <span className="text-sm text-amber-600 font-semibold bg-amber-50 px-2 py-1 rounded-lg">Coming Soon</span>
                           )}
                         </div>
                       </div>
@@ -356,6 +362,7 @@ export default function Home() {
                           </>
                         )}
                       </div>
+                      </div>
                     </div>
                   );
                 })}
@@ -366,10 +373,10 @@ export default function Home() {
         
         {/* Professional Modal */}
         {showPurchaseInfo && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all animate-scaleIn">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-3xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all animate-scaleIn border border-gray-100">
               <div className="flex justify-between items-start mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">購入確認</h2>
+                <h2 className="text-2xl font-bold text-gray-900 tracking-tight">購入確認</h2>
                 <button
                   onClick={cancelPurchase}
                   className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -393,7 +400,7 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200/50 p-6 rounded-2xl">
                       <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                         <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -430,7 +437,7 @@ export default function Home() {
                         購入を確定する
                       </button>
                       <button
-                        className="btn-secondary flex-1"
+                        className="btn-secondary flex-1 group"
                         onClick={cancelPurchase}
                       >
                         キャンセル
@@ -445,7 +452,7 @@ export default function Home() {
       </main>
       
       {/* Professional Footer */}
-      <footer className={`mt-auto border-t border-gray-200 bg-white transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <footer className={`mt-auto border-t border-gray-100 bg-gradient-to-b from-white to-gray-50 transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <div className="container-main py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">

@@ -85,20 +85,20 @@
 @layer components {
   /* Professional Button Styles */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-base font-semibold rounded-xl text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-500/20 transition-all duration-300 shadow-md hover:shadow-lg;
   }
   
   .btn-success {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform;
   }
   
   /* Professional Card Styles */
   .card {
-    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100;
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100/50 overflow-hidden;
   }
   
   .card-hover {
@@ -107,7 +107,7 @@
   
   /* Professional Input Styles */
   .input {
-    @apply block w-full px-4 py-2 text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+    @apply block w-full px-5 py-3 text-gray-900 placeholder-gray-400 bg-white border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 font-medium;
   }
   
   /* Professional Badge Styles */
@@ -135,7 +135,7 @@
   
   /* Glass Effect */
   .glass {
-    @apply bg-white bg-opacity-80 backdrop-blur-lg;
+    @apply bg-white/75 backdrop-blur-xl border border-white/20 shadow-xl;
   }
   
   /* Gradient Text */
