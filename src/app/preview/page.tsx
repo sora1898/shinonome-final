@@ -203,7 +203,7 @@ export default function Preview() {
           <h2 style="color: #374151; margin-top: 30px;">合格者の声</h2>
           <p>実際に慶應法学部に合格した先輩たちの体験記を集めました。合格への道筋を参考にしてください。</p>
           
-          <h3 style="color: #1e40af; margin-top: 25px;">合格体験記例</h3>
+          <h3 style="color: #1e40af; margin-top: 25px;">合格データベース　英語・日本史・小論文</h3>
           <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 15px 0;">
             <h4 style="color: #374151; margin-top: 0;">Aさん（現役合格）</h4>
             <p><strong>合格の決め手：</strong>英語の長文読解力の向上</p>
